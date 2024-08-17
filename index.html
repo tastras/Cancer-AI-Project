@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prediction</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Cancer Prediction Model</h1>
+        <form id="predictionForm">
+            <!-- Mean features -->
+            <label for="radius_mean">Radius Mean (6 - 30):</label>
+            <input type="number" id="radius_mean" name="radius_mean" min="6" max="30" step="0.1" required><br><br>
+            
+            <label for="texture_mean">Texture Mean (9 - 40):</label>
+            <input type="number" id="texture_mean" name="texture_mean" min="9" max="40" step="0.1" required><br><br>
+            
+            <label for="perimeter_mean">Perimeter Mean (40 - 200):</label>
+            <input type="number" id="perimeter_mean" name="perimeter_mean" min="40" max="200" step="0.1" required><br><br>
+            
+            <label for="area_mean">Area Mean (150 - 2500):</label>
+            <input type="number" id="area_mean" name="area_mean" min="150" max="2500" step="1" required><br><br>
+            
+            <label for="smoothness_mean">Smoothness Mean (0.05 - 0.2):</label>
+            <input type="number" id="smoothness_mean" name="smoothness_mean" min="0.05" max="0.2" step="0.001" required><br><br>
+            
+            <label for="compactness_mean">Compactness Mean (0.02 - 0.35):</label>
+            <input type="number" id="compactness_mean" name="compactness_mean" min="0.02" max="0.35" step="0.001" required><br><br>
+            
+            <label for="concavity_mean">Concavity Mean (0 - 0.43):</label>
+            <input type="number" id="concavity_mean" name="concavity_mean" min="0" max="0.43" step="0.001" required><br><br>
+            
+            <label for="concave_points_mean">Concave Points Mean (0 - 0.2):</label>
+            <input type="number" id="concave_points_mean" name="concave_points_mean" min="0" max="0.2" step="0.001" required><br><br>
+            
+            <label for="symmetry_mean">Symmetry Mean (0.1 - 0.3):</label>
+            <input type="number" id="symmetry_mean" name="symmetry_mean" min="0.1" max="0.3" step="0.001" required><br><br>
+            
+            <label for="fractal_dimension_mean">Fractal Dimension Mean (0.05 - 0.1):</label>
+            <input type="number" id="fractal_dimension_mean" name="fractal_dimension_mean" min="0.05" max="0.1" step="0.001" required><br><br>
+            
+            <!-- Standard error features -->
+            <label for="radius_se">Radius SE (0.1 - 3):</label>
+            <input type="number" id="radius_se" name="radius_se" min="0.1" max="3" step="0.001" required><br><br>
+            
+            <label for="texture_se">Texture SE (0.3 - 5):</label>
+            <input type="number" id="texture_se" name="texture_se" min="0.3" max="5" step="0.001" required><br><br>
+            
+            <label for="perimeter_se">Perimeter SE (0.8 - 22):</label>
+            <input type="number" id="perimeter_se" name="perimeter_se" min="0.8" max="22" step="0.01" required><br><br>
+            
+            <label for="area_se">Area SE (6 - 550):</label>
+            <input type="number" id="area_se" name="area_se" min="6" max="550" step="1" required><br><br>
+            
+            <label for="smoothness_se">Smoothness SE (0.002 - 0.03):</label>
+            <input type="number" id="smoothness_se" name="smoothness_se" min="0.002" max="0.03" step="0.0001" required><br><br>
+            
+            <label for="compactness_se">Compactness SE (0.002 - 0.1):</label>
+            <input type="number" id="compactness_se" name="compactness_se" min="0.002" max="0.1" step="0.0001" required><br><br>
+            
+            <label for="concavity_se">Concavity SE (0 - 0.4):</label>
+            <input type="number" id="concavity_se" name="concavity_se" min="0" max="0.4" step="0.001" required><br><br>
+            
+            <label for="concave_points_se">Concave Points SE (0 - 0.05):</label>
+            <input type="number" id="concave_points_se" name="concave_points_se" min="0" max="0.05" step="0.001" required><br><br>
+            
+            <label for="symmetry_se">Symmetry SE (0.008 - 0.08):</label>
+            <input type="number" id="symmetry_se" name="symmetry_se" min="0.008" max="0.08" step="0.001" required><br><br>
+            
+            <label for="fractal_dimension_se">Fractal Dimension SE (0.001 - 0.03):</label>
+            <input type="number" id="fractal_dimension_se" name="fractal_dimension_se" min="0.001" max="0.03" step="0.0001" required><br><br>
+            
+            <!-- Worst features -->
+            <label for="radius_worst">Radius Worst (7 - 40):</label>
+            <input type="number" id="radius_worst" name="radius_worst" min="7" max="40" step="0.1" required><br><br>
+            
+            <label for="texture_worst">Texture Worst (12 - 50):</label>
+            <input type="number" id="texture_worst" name="texture_worst" min="12" max="50" step="0.1" required><br><br>
+            
+            <label for="perimeter_worst">Perimeter Worst (50 - 250):</label>
+            <input type="number" id="perimeter_worst" name="perimeter_worst" min="50" max="250" step="0.1" required><br><br>
+            
+            <label for="area_worst">Area Worst (200 - 3000):</label>
+            <input type="number" id="area_worst" name="area_worst" min="200" max="3000" step="1" required><br><br>
+            
+            <label for="smoothness_worst">Smoothness Worst (0.07 - 0.25):</label>
+            <input type="number" id="smoothness_worst" name="smoothness_worst" min="0.07" max="0.25" step="0.001" required><br><br>
+            
+            <label for="compactness_worst">Compactness Worst (0.03 - 1.2):</label>
+            <input type="number" id="compactness_worst" name="compactness_worst" min="0.03" max="1.2" step="0.01" required><br><br>
+            
+            <label for="concavity_worst">Concavity Worst (0 - 1.3):</label>
+            <input type="number" id="concavity_worst" name="concavity_worst" min="0" max="1.3" step="0.01" required><br><br>
+            
+            <label for="concave_points_worst">Concave Points Worst (0 - 0.3):</label>
+            <input type="number" id="concave_points_worst" name="concave_points_worst" min="0" max="0.3" step="0.001" required><br><br>
+            
+            <label for="symmetry_worst">Symmetry Worst (0.2 - 0.6):</label>
+            <input type="number" id="symmetry_worst" name="symmetry_worst" min="0.2" max="0.6" step="0.001" required><br><br>
+            
+            <button type="button" onclick="submitPrediction()">Predict</button>
+            <script>
+            // Prepare data in the required format for the backend
+            const featureString = Object.values(features).join(', ');
+
+            // Send the data to the backend for prediction
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: featureString }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the prediction result
+                document.getElementById('result').innerHTML = `<h2>Prediction: ${data.prediction}</h2>`;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `<h2>Error: ${error.message}</h2>`;
+            });
+    </script>
